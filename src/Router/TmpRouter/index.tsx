@@ -4,7 +4,7 @@ import * as Pages from "@pages/index";
 const TmpRouter = () => {
   return (
     <Routes>
-      <Route path={TmpRoutes.TmpHome} element={<Pages.TmpHome />} />
+      <Route path={TmpRoutes.TMP_HOME} element={<Pages.TmpHome />} />
     </Routes>
   );
 };
