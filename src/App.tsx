@@ -1,13 +1,26 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
+import { useNavigate } from "react-router-dom";
+import DefaultRouter from "./Router";
+import { useEffect } from "react";
 
-function App() {
+// 로그인 등 공통 처리를 위한 component
+const isLogin = true;
+const App = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    //로그인 시 페이지 이동
+    if (isLogin) {
+      navigate("/tmp", {
+        replace: true,
+      });
+    }
+  }, [isLogin, navigate]);
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      {/* 예: <Route path="/home" element={<Home />} /> 로 바꾸면 URL은 /home */}
-    </Routes>
+    <>
+      <DefaultRouter />
+    </>
   );
-}
+};
 
 export default App;
