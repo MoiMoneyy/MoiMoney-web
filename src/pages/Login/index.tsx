@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import React from "react";
 import naverLogo from "@assets/naver-logo.svg";
 import kakaoLogo from "@assets/kakao-logo.svg";
+import { useAuthStore } from "@/shared/store/auth";
 
 type Provider = "naver" | "kakao";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [recentProvider, setRecentProvider] = useState<Provider | null>(null);
+  const setLogin = useAuthStore((s)=> s.setLogin);
 
   useEffect(() => {
     const saved = localStorage.getItem(
@@ -21,15 +23,23 @@ const LoginPage = () => {
   const loginButtonClick = (provider: Provider) => {
     localStorage.setItem("recentLoginProvider", provider);
     setRecentProvider(provider);
-    // 실제 소셜 로그인 URL로 이동하도록 교체하세요.
-    // 예: window.location.href = `/auth/${provider}`;
-    alert(`${provider} 로그인으로 이동합니다 (URL 연결 필요)`);
+    if (provider === "naver") {
+      const clientId = "_PG0G00u5_lxKPc17PB9"; // 발급받은 Client ID
+      const redirectUri = encodeURIComponent("http://localhost:5173/naver/callback"); 
+      const state = Math.random().toString(36).substring(2, 15); // CSRF 방지용 랜덤 문자열
+  
+      const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}`;
+  
+      window.location.href = naverAuthUrl;
+      setLogin(true);
+      return;
+    }
   };
 
   const handleGuestClick = async () => {
     try {
       setLoading(true);
-      alert("로그인 없이 이용하기");
+      setLogin(true);
       // 예: window.location.href = '/';
     } finally {
       setLoading(false);
