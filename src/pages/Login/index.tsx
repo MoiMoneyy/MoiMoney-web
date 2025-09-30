@@ -97,8 +97,11 @@ const styles: { [k: string]: React.CSSProperties } = {
     alignItems: "center",
     gap: 40,
     margin: "0 auto",
-    marginTop: 290,
+    paddingTop: 390,
     marginBottom: 144,
+    width: '70%',
+    height: '60vh',
+    backgroundColor: 'white'
   },
   mainDisplay: {
     display: "flex",
