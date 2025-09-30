@@ -23,19 +23,23 @@ const LoginPage = () => {
   const loginButtonClick = (provider: Provider) => {
     localStorage.setItem("recentLoginProvider", provider);
     setRecentProvider(provider);
+  
     if (provider === "naver") {
-      const clientId = "_PG0G00u5_lxKPc17PB9"; // 발급받은 Client ID
-      const redirectUri = encodeURIComponent("http://localhost:5173/naver/callback"); 
-      const state = Math.random().toString(36).substring(2, 15); // CSRF 방지용 랜덤 문자열
+      const clientId = "_PG0G00u5_lxKPc17PB9";
+      const redirectUri =
+        import.meta.env.MODE === "production"
+          ? encodeURIComponent("https://moi-money-web.vercel.app/naver/callback")
+          : encodeURIComponent("http://localhost:5173/naver/callback");
+  
+      const state = Math.random().toString(36).substring(2, 15);
   
       const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&state=${state}`;
   
       window.location.href = naverAuthUrl;
-      setLogin(true);
       return;
     }
   };
-
+  
   const handleGuestClick = async () => {
     try {
       setLoading(true);
