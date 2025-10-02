@@ -2,23 +2,28 @@ import { useNavigate } from "react-router-dom";
 import DefaultRouter from "./Router";
 import { useEffect } from "react";
 import { useAuthStore } from "@/shared/store/auth";
-// 로그인 등 공통 처리를 위한 component
+import DefaultLayout from "./shared/components/DefaultLayout";
+
 const App = () => {
   const navigate = useNavigate();
-  const isLogin = useAuthStore((s) => s.isLogin);
+  // const isLogin = useAuthStore((s) => s.isLogin);
+  const isLogin = true;
   useEffect(() => {
-    //로그인 시 페이지 이동
     if (isLogin) {
-      navigate("/tmp", {
+      navigate("/main", {
+        replace: true,
+      });
+    } else {
+      navigate("/", {
         replace: true,
       });
     }
-  }, [isLogin, navigate]);
+  }, []);
 
   return (
-    <>
-      <DefaultRouter />     
-    </>
+    <DefaultLayout>
+      <DefaultRouter />
+    </DefaultLayout>
   );
 };
 

@@ -1,2 +1,3 @@
 export { default as LoginPage } from "./Login";
-export { default as TmpHome } from "./Tmp";
+export { default as CreatePortfolio } from "./CreatePortfolio";
+export { default as MainHome } from "./Home";
