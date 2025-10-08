@@ -46,9 +46,7 @@ const Tmp = () => {
          </div>
        ))}
      </div>
-
-     <div 
-         
+     <div          
       style={{
         ...styles.button
       }}
@@ -61,11 +59,8 @@ const Tmp = () => {
       }}
     >
     선택하기
-    </div>
-    
-     </div>
-     
-     
+    </div>    
+     </div>        
     </>
   );
 };
@@ -87,13 +82,11 @@ const styles: { [k: string]: React.CSSProperties } = {
     marginLeft: '-15vh',
     fontSize: 23
   },
-  tabContainer: {
-    
+  tabContainer: {    
     flexDirection: 'column',
     backgroundColor: 'white',
     padding: '10px 0',
     zIndex: 1000,
-    
   },
   tab: {
     width: '45vh',
