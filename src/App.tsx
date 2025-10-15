@@ -9,12 +9,8 @@ const App = () => {
   // const isLogin = useAuthStore((s) => s.isLogin);
   const isLogin = true;
   useEffect(() => {
-    if (isLogin) {
-      navigate("/main", {
-        replace: true,
-      });
-    } else {
-      navigate("/", {
+    if (!isLogin) {
+      navigate("/login", {
         replace: true,
       });
     }

@@ -4,9 +4,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Content = styled.div`
@@ -16,4 +13,8 @@ export const Content = styled.div`
   height: 100%;
   background-color: white;
   display: flex;
+  position: fixed;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, 0);
 `;
