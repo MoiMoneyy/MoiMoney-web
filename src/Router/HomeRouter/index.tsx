@@ -5,10 +5,7 @@ const HomeRouter = () => {
   return (
     <Routes>
       <Route path={HomeRoutes.HOME_MAIN} element={<Pages.MainHome />} />
-      <Route
-        path={HomeRoutes.CREATE_PORTFOLIO}
-        element={<Pages.CreatePortfolio />}
-      />
+      <Route path={HomeRoutes.CREATE_PORTFOLIO} element={<Pages.Create />} />
     </Routes>
   );
 };
