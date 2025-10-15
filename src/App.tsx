@@ -6,8 +6,7 @@ import DefaultLayout from "./shared/components/DefaultLayout";
 
 const App = () => {
   const navigate = useNavigate();
-  // const isLogin = useAuthStore((s) => s.isLogin);
-  const isLogin = true;
+  const isLogin = useAuthStore((s) => s.isLogin);
   useEffect(() => {
     if (!isLogin) {
       navigate("/login", {
