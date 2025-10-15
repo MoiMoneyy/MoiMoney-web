@@ -1,5 +1,5 @@
 export const NonLayoutBaseRoute = "/*";
 
 export const NonLayoutRoutes = {
-  LOGIN: "/",
+  LOGIN: "/login",
 };
